@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "DynaPuff", system-ui, Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Preenche toda a altura da tela */
+}
+
+.mensagem-do-dia, .contador {
+    background-color: #F96699; /* Rosa */
+    color: white;
+    padding: 80px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 90%; /* Largura responsiva */
+    max-width: 400px; /* Largura máxima */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+
+    
+}
+
+.contador {
+    background-color: #38CCCC; /* Ciano */
+}
