@@ -381,6 +381,6 @@ const mensagemIndex = dayOfYear % mensagens.length;
 document.getElementById("mensagem").innerText = mensagens[mensagemIndex];
 
 // Calcular o contador de dias de namoro
-const dataInicio = new Date('2024-10-19');
+const dataInicio = new Date('2024-10-17');
 const diasNamorando = Math.floor((today - dataInicio) / (1000 * 60 * 60 * 24));
 document.getElementById("dias-namorando").innerText = `Estamos namorando há ${diasNamorando} dias.`;
