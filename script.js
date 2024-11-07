@@ -12,6 +12,7 @@ const mensagens = [
     "Amo o brilho dos seus olhos quando fala do que gosta.",
     "Amo escutar voce falar do que gosta.",
     "Amo o jeito como cuida de mim.",
+    "Amo como vc inventa varios apelidos carinhosos.",
     "Amo seu jeito meigo de demonstrar amor em pequenas ações.",
     "Amo seu toque suave e reconfortante.",
     "Amo como você me entende sem precisar de palavras.",
