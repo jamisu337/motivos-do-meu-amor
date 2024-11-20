@@ -11,9 +11,10 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh; /* Preenche toda a altura da tela */
+    position: relative;
 }
 
-.mensagem-do-dia, .contador {
+.mensagem-do-dia, .contador{
     background-color: #F96699; /* Rosa */
     color: white;
     padding: 80px 20px;
@@ -24,6 +25,28 @@ body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
 
     
+}
+
+button{
+    font-family: "DynaPuff", system-ui, Arial, sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+ul{
+    background-color: #38CCCC;
+    text-align: left;
+    position: absolute;
+    padding-top: 80px;
+    padding-right: 20px;
+    height: 100vh;
+}
+
+li, li::marker{
+    background-color: #38CCCC;
+    padding: 5px;
 }
 
 .contador {
