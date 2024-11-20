@@ -4,8 +4,8 @@ const mensagens = [
     "Amo como você me faz rir, mesmo nos dias difíceis.",
     "Amo sua paixão por rock e como me ensina a amar isso também.",
     "Amo seu cheiro, que fica marcado nos meus pensamentos.",
-    "Amo sua sensibilidade e como percebe tudo ao seu redor.",
-    "Amo o som da sua risada, que ilumina o meu dia.",
+    "Amo seus olhos e como eles brilham ao me ver.",
+    "Amo seu sorriso e como ele alegra o ambiente.",
     "Amo a forma como você acredita em mim e me encoraja.",
     "Amo seu abraço que me faz sentir em casa.",
     "Amo como você transforma momentos simples em inesquecíveis.",
@@ -22,28 +22,28 @@ const mensagens = [
     "Amo como você torna cada dia especial.",
     "Amo o fato de que sempre posso contar com você.",
     "Amo seu jeito único de enxergar o mundo.",
-    "Amo sua energia positiva e contagiante.",
+    "Amo nossos RPs.",
     "Amo como compartilha seus sonhos comigo.",
-    "Amo o jeito como me surpreende com pequenas coisas.",
-    "Amo a paz que sinto quando estou ao seu lado.", 
-/*    "Amo a sinceridade que traz para o nosso relacionamento.",
-    "Amo o jeito que valoriza a nossa história juntos.",
+    "Amo cozinhar com voce.",
+    "Amo passar horas deitado ao seu lado.", 
+    "Amo nossas vigens em nossos pensamentos.",
+    "Amo seus beijos e como eles me alegram.",
     "Amo o calor do seu carinho que me faz sentir amado.",
-    "Amo a forma como acredita no nosso futuro.",
-    "Amo que você seja sempre autêntica e verdadeira.",
-    "Amo o jeito como ilumina qualquer ambiente.",
-    "Amo o amor que dedica ao que faz e aos que ama.",
-    "Amo sua curiosidade e desejo de aprender sempre mais.",
+    "Amo todos os seus abraços.",
+    "Amo sua sinceridade.",
+    "Amo quando voce me olha com um olhar de desejo.",
+    "Amo passear com voce.",
+    "Amo como voce presta atençao quando estou falando besteira.",
     "Amo o jeito doce como fala comigo.",
-    "Amo como respeita e valoriza meus sentimentos.",
-    "Amo sua generosidade e disposição para ajudar os outros.",
-    "Amo sua capacidade de ver o lado bom de cada situação.",
+    "Amo quando voce me chama de minha vida.",
+    "Amo chamar voce de minha vida.",
+    "Amo sua paciencia em lidar comigo.",
     "Amo que você me entende melhor do que eu mesmo.",
-    "Amo como você traz tranquilidade aos meus dias.",
+    "Amo como você traz a paz para os meus dias.",
     "Amo a lealdade que demonstra em tudo que faz.",
     "Amo a forma como equilibra razão e emoção.",
     "Amo o jeito como compartilha os seus segredos comigo.",
-    "Amo o jeito que me faz sentir especial todos os dias.",
+/*    "Amo o jeito que me faz sentir especial todos os dias.",
     "Amo a forma como você cuida de nós e do nosso amor.",
     "Amo o jeito como você lida com os desafios.",
     "Amo seu sorriso, que ilumina até os dias nublados.",
@@ -374,14 +374,50 @@ const mensagens = [
     "Amo o fato de ser meu amor e meu melhor apoio." */
 ];
 
+//----------------------------------------------
 
 // Calcular a mensagem do dia
 const today = new Date();
-const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-const mensagemIndex = dayOfYear % mensagens.length;
-document.getElementById("mensagem").innerText = mensagens[mensagemIndex];
-
-// Calcular o contador de dias de namoro
 const dataInicio = new Date('2024-10-17');
 const diasNamorando = Math.floor((today - dataInicio) / (1000 * 60 * 60 * 24));
+document.getElementById("mensagem").innerText = mensagens[diasNamorando - 1];
 document.getElementById("dias-namorando").innerText = `Estamos namorando há ${diasNamorando} dias.`;
+
+// Selecionar apenas as primeiras mensagens
+const mensagensLimitadas = mensagens.slice(0, diasNamorando);
+
+// Exibindo as mensagens no HTML
+const listaMensagens = document.getElementById("lista_mensagens");
+mensagensLimitadas.forEach((mensagem) => {
+    const li = document.createElement("li");
+    li.textContent = mensagem;
+    listaMensagens.appendChild(li);
+
+    // Ao clicar na mensagem, ela desaparece
+    li.addEventListener("click", () => {
+        li.style.display = "none";
+    });
+});
+
+// Alternar visibilidade da lista
+const botaoToggle = document.getElementById("toggle_lista");
+botaoToggle.addEventListener("click", () => {
+    if (listaMensagens.style.display === "none") {
+        listaMensagens.style.display = "block";
+        botaoToggle.textContent = "Exibir todas as mensagens *BETA*";
+    } else {
+        listaMensagens.style.display = "none";
+        botaoToggle.textContent = "Exibir todas as mensagens *BETA*";
+    }
+});
+
+const botaovoltar = document.getElementById("voltar_lista");
+botaovoltar.addEventListener("click", () => {
+    if (listaMensagens.style.display === "none") {
+        listaMensagens.style.display = "block";
+        botaovoltar.textContent = "voltar";
+    } else {
+        listaMensagens.style.display = "none";
+        botaovoltar.textContent = "voltar";
+    }
+});
