@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Preenche toda a altura da tela */
+    height: 180vh; /* Preenche toda a altura da tela */
     position: relative;
 }
 
@@ -25,6 +25,11 @@ body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
 
     
+}
+
+.nossa_foto {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 button{
