@@ -381,8 +381,10 @@ const mensagens = [
 const today = new Date();
 const dataInicio = new Date('2024-10-17');
 const diasNamorando = Math.floor((today - dataInicio) / (1000 * 60 * 60 * 24));
+const detalhesNamorando = Math.floor(today - dataInicio);
 document.getElementById("mensagem").innerText = mensagens[diasNamorando - 1];
 document.getElementById("dias-namorando").innerText = `Estamos namorando há ${diasNamorando} dias.`;
+//document.getElementById("detalhes-namorando").innerText = `Estamos namorando há ${((detalhesNamorando)/1000*60*60)} segundos.`;
 
 // Selecionar apenas as primeiras mensagens
 const mensagensLimitadas = mensagens.slice(0, diasNamorando);
@@ -394,10 +396,6 @@ mensagensLimitadas.forEach((mensagem) => {
     li.textContent = mensagem;
     listaMensagens.appendChild(li);
 
-    // Ao clicar na mensagem, ela desaparece
-    li.addEventListener("click", () => {
-        li.style.display = "none";
-    });
 });
 
 // Alternar visibilidade da lista
