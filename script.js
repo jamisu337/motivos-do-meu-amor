@@ -152,6 +152,7 @@ const mensagens = [
     "Amo a sua força.",
     "Amo nossos assuntos viajados.",
     "Amo a sua companhia, que faz qualquer momento ser especial.",
+    "Amo seus coturnos (ja olhou eles hj?).",
     "Amo a forma como celebra as nossas pequenas conquistas.",
     "Amo chegar em casa e ter você para me acolher.",
     "Amo como tenta me fazer feliz todos os dias.",
