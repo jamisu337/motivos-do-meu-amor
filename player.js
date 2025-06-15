@@ -34,4 +34,14 @@ class musicPlayer {
 
 const newMusicplayer = new musicPlayer();
 
-newMusicplayer.play();
+function iniciarMusicaComInteracao() {
+    if (!newMusicplayer.isPlaying) {
+      newMusicplayer.play();
+    }
+    document.body.removeEventListener('click', iniciarMusicaComInteracao);
+    document.body.removeEventListener('touchend', iniciarMusicaComInteracao);
+  }
+  
+  // Adiciona os "ouvintes" de interação
+  document.body.addEventListener('click', iniciarMusicaComInteracao);
+  document.body.addEventListener('touchend', iniciarMusicaComInteracao);
