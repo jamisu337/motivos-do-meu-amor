@@ -16,16 +16,25 @@ class musicPlayer {
     this.playBtn.addEventListener('click', this.play);
   }
 
-  play() {
+  async play() { // 1. Adicionamos a palavra "async" aqui
     // Verifica se a música NÃO está tocando
     if (!this.isPlaying) {
-      this.audio.play(); // Toca a música
-      this.isPlaying = true; // Atualiza o estado
-      this.controlPanel.classList.add('active');
-      this.infoBar.classList.add('active');
+      try { // 2. Adicionamos um bloco "try...catch"
+        await this.audio.play(); // 3. Adicionamos "await" para esperar a permissão
+        
+        // Este código só roda se o navegador PERMITIR a reprodução:
+        this.isPlaying = true;
+        this.controlPanel.classList.add('active');
+        this.infoBar.classList.add('active');
+
+      } catch (error) {
+        // Este código roda se o navegador NEGAR a permissão:
+        console.error("O navegador bloqueou a reprodução automática:", error);
+      }
+
     } else { // Se JÁ estiver tocando
-      this.audio.pause(); // Pausa a música
-      this.isPlaying = false; // Atualiza o estado
+      this.audio.pause();
+      this.isPlaying = false;
       this.controlPanel.classList.remove('active');
       this.infoBar.classList.remove('active');
     }
