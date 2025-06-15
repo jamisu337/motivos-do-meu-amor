@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagens de Amor</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles_player.css">
 </head>
 <body>
 
@@ -27,7 +28,24 @@
         <div id="dias-namorando"></div>
         <div id="detalhes-namorando"></div>
     </div>
+
+    <div class="player">
+        <audio id="minha-musica" src="musicas/System of a Down - Lonely Day (Instrumental) [UkrTrashDub].mp3" loop></audio>
+        <div id="info" class="info">
+          <span class="artist">System of a down</span>
+          <span class="name">Lonely day</span>
+        </div>
+        <div id="control-panel" class="control-panel">
+          <div class="album-art"></div>
+          <div class="controls">
+            <div class="prev"></div>
+            <div id="play" class="play"></div>
+            <div class="next"></div>
+          </div>
+        </div>
+      </div>
     
+    <script src="player.js"></script>
     <script src="mensagens.js"></script>
     <script src="script.js"></script>
 </body>
