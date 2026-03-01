@@ -1,19 +1,152 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ===== SISTEMA DE TEMAS ===== */
+[data-theme="dark"] {
+    --bg-color: #10101c;
+    --bg-color-list: #2d1f3d;
+    --text-color: #f0f0f0;
+    --card-primary: #c94b7a;
+    --card-secondary: #2a9d9d;
+    --btn-bg: #2d2d4e;
+    --btn-text: #f0f0f0;
+    --btn-hover: #3d3d6e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --player-bg: rgba(30, 30, 50, 0.6);
+    --player-panel-bg: #2d2d4e;
+    --player-text: #ccc;
+    --player-hover: #3d3d6e;
+    --toggle-bg: #2d2d4e;
+    --toggle-knob: #f0f0f0;
+}
+
+[data-theme="light"] {
+    --bg-color: #f0f0f0;
+    --bg-color-list: #F96699;
+    --text-color: #333;
+    --card-primary: #F96699;
+    --card-secondary: #38CCCC;
+    --btn-bg: #ffffff;
+    --btn-text: #333;
+    --btn-hover: #e8e8e8;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --player-bg: rgba(255, 255, 255, 0.5);
+    --player-panel-bg: #fff;
+    --player-text: #999;
+    --player-hover: #eee;
+    --toggle-bg: #ccc;
+    --toggle-knob: #fff;
+}
+
 body {
     font-family: "DynaPuff", system-ui, Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 10vh;
     position: relative;
-    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+    transition: background-color 0.4s ease, color 0.4s ease;
     padding-top: 60px;
+    overflow-x: hidden;
+}
+
+/* ===== BOTÃO TOGGLE DE TEMA ===== */
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle-label {
+    font-family: "DynaPuff", system-ui, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: color 0.4s ease;
+}
+
+.theme-toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: var(--toggle-bg);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0;
+}
+
+.theme-toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--toggle-knob);
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .theme-toggle-switch::after {
+    transform: translateX(20px);
+}
+
+/* ===== ANIMAÇÃO FADE-IN ESCALONADO ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.fade-in:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.fade-in:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.fade-in:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.fade-in:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+.fade-in:nth-child(6) {
+    animation-delay: 0.85s;
+}
+
+h1 {
+    transition: color 0.4s ease;
 }
 
 #music-player {
@@ -24,42 +157,66 @@ body {
     height: 40px;
     padding: 5px 0;
     z-index: 100;
-    
-    /* Efeito de vidro fosco (transparência + desfoque) */
-    background-color: rgba(255, 255, 255, 0.3); /* Fundo branco com 60% de opacidade */
-    -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Chrome, Safari) */
-    backdrop-filter: blur(10px); /* Desfoque padrão */
-    
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    background-color: var(--player-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.4s ease;
 }
 
 #music-player::-webkit-media-controls-panel {
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
 }
 
-.mensagem-do-dia, .contador{
-    background-color: #F96699;
+.mensagem-do-dia,
+.contador {
+    background-color: var(--card-primary);
     color: white;
     padding: 80px 20px;
     border-radius: 10px;
     margin: 10px;
-    width: 90%; 
+    width: 90%;
     max-width: 400px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 5px 5px 15px var(--shadow-color);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
 }
 
-button{
+.mensagem-do-dia:hover,
+.contador:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 8px 12px 25px var(--shadow-color);
+}
+
+.mensagem-do-dia h2,
+.contador h2 {
+    display: inline-block;
+}
+
+button {
     font-family: "DynaPuff", system-ui, Arial, sans-serif;
     padding: 10px;
     border-radius: 5px;
     border-style: none;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 5px 5px 5px var(--shadow-color);
     cursor: pointer;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 5px 8px 15px var(--shadow-color);
+}
+
+button:active {
+    transform: translateY(0) scale(0.97);
 }
 
 #lista_mensagens {
-    background-color: #F96699;
-    color: white; /* Texto branco para melhor leitura */
+    background-color: var(--bg-color-list);
+    color: white;
     text-align: left;
     position: absolute;
     top: 0;
@@ -68,27 +225,112 @@ button{
     height: 100%;
     margin: 0;
     padding: 20px;
-    padding-top: 60px; /* Espaço para o botão "voltar" */
+    padding-top: 60px;
     box-sizing: border-box;
-    overflow-y: auto; /* Permite rolagem se as mensagens excederem a tela */
+    overflow-y: auto;
     z-index: 200;
+    transition: background-color 0.4s ease;
 }
 
 #voltar_lista {
-    position: fixed; /* Fixa o botão no topo */
+    position: fixed;
     top: 20px;
     left: 20px;
-    background-color: white;
-    color: #333;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
 }
 
-
-li, li::marker{
-    background-color: transparent; /* Remove o fundo do item da lista */
+li,
+li::marker {
+    background-color: transparent;
     padding: 5px;
     margin-left: 20px;
 }
 
 .contador {
-    background-color: #38CCCC;
+    background-color: var(--card-secondary);
+}
+
+/* ===== DETALHES DO CONTADOR ===== */
+#detalhes-namorando {
+    margin-top: 12px;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* ===== PARTÍCULAS DE CORAÇÕES FLUTUANTES ===== */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle-heart {
+    position: absolute;
+    bottom: -30px;
+    color: var(--card-primary);
+    opacity: 0;
+    font-size: 16px;
+    animation: floatUp linear infinite;
+    transition: color 0.4s ease;
+}
+
+#lista_mensagens .particle-heart {
+    color: white;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg) scale(0.5);
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.15;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) rotate(360deg) scale(1);
+    }
+}
+
+/* ===== GLOW SUTIL NO FUNDO ===== */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(201, 75, 122, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(42, 157, 157, 0.06) 0%, transparent 50%);
+    animation: glowShift 8s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes glowShift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(3%, -3%);
+    }
+}
+
+/* ===== SUAVIZAR TODOS OS ELEMENTOS ===== */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

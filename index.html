@@ -1,52 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagens de Amor</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles_player.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagens de Amor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles_player.css">
 </head>
+
 <body>
 
-    <h1 style="color: #e5437b;">365 motivos para<br>te amar</h1>
+  <!-- Partículas de corações flutuantes -->
+  <div class="particles-container" id="particles"></div>
 
-    <div class="mensagem-do-dia">
-        <h2>&hearts; Mensagem do Dia &hearts;</h2>
-        <div id="mensagem"></div>
-        
+  <div class="theme-toggle">
+    <span class="theme-toggle-label">Tema</span>
+    <button class="theme-toggle-switch" id="theme-toggle" aria-label="Alternar tema"></button>
+  </div>
+
+  <h1 class="fade-in" style="color: #e5437b;">365 motivos para<br>te amar</h1>
+
+  <div class="mensagem-do-dia fade-in">
+    <h2>&hearts; Mensagem do Dia &hearts;</h2>
+    <div id="mensagem"></div>
+  </div>
+
+  <button id="toggle_lista" class="fade-in">Todas as mensagens</button>
+  <ul id="lista_mensagens" style="display: none;">
+    <div class="particles-container" id="particles-lista"></div>
+    <button id="voltar_lista">voltar</button>
+    <!-- Mensagens serão inseridas dinamicamente aqui -->
+  </ul>
+
+  <div class="contador fade-in">
+    <h2>&hearts; Contador de Dias &hearts;</h2>
+    <div id="dias-namorando"></div>
+    <div id="detalhes-namorando"></div>
+  </div>
+
+  <div class="player fade-in">
+    <audio id="minha-musica" src="musicas/System of a Down - Lonely Day (Instrumental) [UkrTrashDub].mp3" loop></audio>
+    <div id="info" class="info">
+      <span class="artist">System of a down</span>
+      <span class="name">Lonely day</span>
     </div>
-
-    <button id="toggle_lista">Todas as mensagens</button>
-    <ul id="lista_mensagens" style="display: none;">
-        <button id="voltar_lista">voltar</button>
-        <!-- Mensagens serão inseridas dinamicamente aqui -->
-    </ul>
-
-    <div class="contador">
-        <h2>&hearts; Contador de Dias &hearts;</h2>
-        <div id="dias-namorando"></div>
-        <div id="detalhes-namorando"></div>
-    </div>
-
-    <div class="player">
-        <audio id="minha-musica" src="musicas/System of a Down - Lonely Day (Instrumental) [UkrTrashDub].mp3" loop></audio>
-        <div id="info" class="info">
-          <span class="artist">System of a down</span>
-          <span class="name">Lonely day</span>
-        </div>
-        <div id="control-panel" class="control-panel">
-          <div class="album-art"></div>
-          <div class="controls">
-            <div class="prev"></div>
-            <div id="play" class="play"></div>
-            <div class="next"></div>
-          </div>
-        </div>
+    <div id="control-panel" class="control-panel">
+      <div class="album-art"></div>
+      <div class="controls">
+        <div class="prev"></div>
+        <div id="play" class="play"></div>
+        <div class="next"></div>
       </div>
-    
-    <script src="player.js"></script>
-    <script src="mensagens.js"></script>
-    <script src="script.js"></script>
+    </div>
+  </div>
+
+  <script src="player.js"></script>
+  <script src="mensagens.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
