@@ -1,0 +1,25 @@
+/* ===== EXPLOSÃO DE CORAÇÕES AO CLICAR ===== */
+.click-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 18px;
+    opacity: 1;
+    animation: explodeHeart 0.8s ease-out forwards;
+}
+
+@keyframes explodeHeart {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(var(--rot));
+    }
+}
